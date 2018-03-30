@@ -1,0 +1,13 @@
+# React Man
+
+## Createing a react component:
+
+You can start a create a react component in two ways:
+1. the regular way by using, class ComponentName extends React.Component{}
+2. Or using a stateless functional component, no class no extends, no "this" mess or need for a constructor or workaround or return: const ComponentName = ({someText}) => {};
+
+The end is always the same: export default ComponentName;
+
+## logic in JSX
+
+There is no logic in JSX

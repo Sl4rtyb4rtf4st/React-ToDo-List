@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 60vw;
+  padding: 20px;
+  margin: 0 auto;
+}
+.todolist {}
+.inputcontainer {}
+.inputcontainer__input {}
+.todolist__list {}
+.todolist__list__item {}
+.todolist__list__remove-item {}
