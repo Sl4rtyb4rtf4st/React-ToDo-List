@@ -1,15 +1,12 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import logo from '../logo.svg';
-// import './css/App.css'
+import '../css/App.css'
 
 
 class App extends React.Component{
   state = {
-    items: {
-      "item1": "Some todo item",
-      "item2": "Doe iets!"
-    }
+    items: {}
   };
 
   onKeyUpHandler = (e) => {
@@ -23,6 +20,25 @@ class App extends React.Component{
       // Empty the input field
       e.currentTarget.value = "";
     }
+  }
+
+  componentDidMount() {
+    // Fist after reload reinstate the ToDo list state from localStorage
+
+    // Got error that localStorage is undefined
+    if (!localStorage) {
+      console.log("no localStorage....WHAAAT?");
+      return;
+    }
+    const localStorage = window.localStorage.getItem("ToDo");
+    if(localStorage) {
+      this.setState({ order: JSON.parse(localStorage)});
+    }
+  }
+
+  componentDidUpdate() {
+    // When the state changes update the localStorage
+    window.localStorage.setItem("ToDo", JSON.stringify(this.state.items));
   }
 
   addToDoItems = (key, value) => {
@@ -49,7 +65,7 @@ class App extends React.Component{
     return(
       <div className="todolist">
         <div className="inputcontainer">
-          <input type="text" name="inputcontainer__input" onKeyUp={this.onKeyUpHandler}/>
+          <input type="text" name="inputcontainer__input" onKeyUp={this.onKeyUpHandler} inputMode="text" placeholder="Todo Item"/>
         </div>
         <ul className="todolist__list">
           {Object.keys(this.state.items).map(item => (
